@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Валентинка для Каті 💖</title>
+<style>
+body{
+margin:0;
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+background:linear-gradient(135deg,#ffb6b9,#fae3d9);
+font-family:Segoe UI,sans-serif;
+overflow:hidden;
+}
+.card{
+background:#fff;
+padding:40px 30px;
+border-radius:25px;
+text-align:center;
+box-shadow:0 20px 40px rgba(0,0,0,.2);
+max-width:320px;
+width:90%;
+z-index:2;
+}
+h1{color:#e63946;font-size:34px;margin:10px 0}
+p{font-size:18px}
+button{
+margin-top:25px;
+padding:14px 20px;
+font-size:17px;
+border:none;
+border-radius:30px;
+background:#e63946;
+color:#fff;
+cursor:pointer;
+width:100%;
+}
+#yes{
+display:none;
+font-size:20px;
+color:#e63946;
+margin-top:20px;
+}
+.heart{
+font-size:55px;
+animation:beat 1s infinite;
+}
+@keyframes beat{
+0%,100%{transform:scale(1)}
+50%{transform:scale(1.2)}
+}
+.flying-heart{
+position:absolute;
+font-size:24px;
+animation:fly 2s ease-out forwards;
+}
+@keyframes fly{
+from{
+transform:translateY(0) scale(1);
+opacity:1;
+}
+to{
+transform:translateY(-300px) scale(1.8);
+opacity:0;
+}
+}
+</style>
+</head>
+
+<body>
+<div class="card">
+<div class="heart">❤️</div>
+<h1>Катя</h1>
+<p>Ти — моя любіма дівчина<br>у всьому житті 🥰</p>
+
+<button onclick="yes()">Ти будеш моєю валентинкою? 💌</button>
+
+<div id="yes">Урааа! 💖 Я щасливий 😘</div>
+</div>
+
+<script>
+function yes(){
+document.getElementById('yes').style.display='block';
+
+for(let i=0;i<30;i++){
+let heart=document.createElement('div');
+heart.className='flying-heart';
+heart.innerHTML='❤️';
+heart.style.left=Math.random()*100+'vw';
+heart.style.top='60%';
+heart.style.animationDuration=(1.5+Math.random())+'s';
+document.body.appendChild(heart);
+
+setTimeout(()=>heart.remove(),2000);
+}
+}
+</script>
+</body>
+</html>
