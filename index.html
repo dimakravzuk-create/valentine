@@ -27,21 +27,25 @@ z-index:2;
 h1{color:#e63946;font-size:34px;margin:10px 0}
 p{font-size:18px}
 button{
-margin-top:25px;
-padding:14px 20px;
-font-size:17px;
+margin-top:15px;
+padding:12px 18px;
+font-size:16px;
 border:none;
-border-radius:30px;
-background:#e63946;
-color:#fff;
+border-radius:25px;
 cursor:pointer;
 width:100%;
 }
-#yes{
+.btn-main{
+margin-top:25px;
+background:#e63946;
+color:#fff;
+}
+.btn-yes{background:#ff5c8a;color:#fff}
+.btn-no{background:#ccc;color:#333}
+#yesBlock,#choice,#result{
 display:none;
-font-size:20px;
-color:#e63946;
-margin-top:20px;
+margin-top:15px;
+font-size:18px;
 }
 .heart{
 font-size:55px;
@@ -57,14 +61,8 @@ font-size:24px;
 animation:fly 2s ease-out forwards;
 }
 @keyframes fly{
-from{
-transform:translateY(0) scale(1);
-opacity:1;
-}
-to{
-transform:translateY(-300px) scale(1.8);
-opacity:0;
-}
+from{transform:translateY(0);opacity:1}
+to{transform:translateY(-300px);opacity:0}
 }
 </style>
 </head>
@@ -75,26 +73,43 @@ opacity:0;
 <h1>Катя</h1>
 <p>Ти — моя любіма дівчина<br>у всьому житті 🥰</p>
 
-<button onclick="yes()">Ти будеш моєю валентинкою? 💌</button>
+<button class="btn-main" onclick="firstYes()">Ти будеш моєю валентинкою? 💌</button>
 
-<div id="yes">Урааа! 💖 Я щасливий 😘</div>
+<div id="yesBlock">Урааа! 💖 Я щасливий 😘</div>
+
+<div id="choice">
+<p>А тепер скажи чесно 😏</p>
+<button class="btn-yes" onclick="answerYes()">Так 💕</button>
+<button class="btn-no" onclick="answerNo()">Ні 🙈</button>
+</div>
+
+<div id="result"></div>
 </div>
 
 <script>
-function yes(){
-document.getElementById('yes').style.display='block';
+function firstYes(){
+document.getElementById('yesBlock').style.display='block';
+document.getElementById('choice').style.display='block';
 
-for(let i=0;i<30;i++){
-let heart=document.createElement('div');
-heart.className='flying-heart';
-heart.innerHTML='❤️';
-heart.style.left=Math.random()*100+'vw';
-heart.style.top='60%';
-heart.style.animationDuration=(1.5+Math.random())+'s';
-document.body.appendChild(heart);
-
-setTimeout(()=>heart.remove(),2000);
+for(let i=0;i<25;i++){
+let h=document.createElement('div');
+h.className='flying-heart';
+h.innerHTML='❤️';
+h.style.left=Math.random()*100+'vw';
+h.style.top='60%';
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),2000);
 }
+}
+
+function answerYes(){
+document.getElementById('result').innerHTML='Жду… 😘😘';
+document.getElementById('result').style.display='block';
+}
+
+function answerNo(){
+document.getElementById('result').innerHTML='😔';
+document.getElementById('result').style.display='block';
 }
 </script>
 </body>
